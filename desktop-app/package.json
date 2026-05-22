@@ -1,0 +1,63 @@
+{
+  "name": "skin-cancer-detection-desktop",
+  "version": "1.0.0",
+  "description": "Privacy-preserving federated learning desktop app for skin cancer detection",
+  "main": "main.js",
+  "homepage": "./",
+  "scripts": {
+    "start": "electron .",
+    "dev": "electron .",
+    "build-react": "cd ../client && npm run build",
+    "build": "npm run build-react && electron-builder",
+    "build-win": "npm run build-react && electron-builder --win --publish never",
+    "build-mac": "npm run build-react && electron-builder --mac --publish never",
+    "build-linux": "npm run build-react && electron-builder --linux --publish never",
+    "dev-full": "concurrently --kill-others \"cd ../client && npm run dev\" \"electron .\""
+  },
+  "dependencies": {
+    "axios": "^1.6.0"
+  },
+  "devDependencies": {
+    "electron": "^27.0.0",
+    "electron-builder": "^24.6.4",
+    "concurrently": "^8.2.1"
+  },
+  "build": {
+    "appId": "com.skin-cancer-detection.app",
+    "productName": "Skin Cancer Detection",
+    "directories": {
+      "output": "release"
+    },
+    "files": [
+      "main.js",
+      "preload.js",
+      "package.json"
+    ],
+    "extraResources": [
+      {
+        "from": "../client/dist",
+        "to": "../client/dist",
+        "filter": ["**/*"]
+      },
+      {
+        "from": "../desktop-app/fl_client",
+        "to": "../desktop-app/fl_client",
+        "filter": ["**/*.py", "requirements.txt"]
+      },
+      {
+        "from": "../federated-learning",
+        "to": "../federated-learning",
+        "filter": ["*.py", "requirements.txt"]
+      }
+    ],
+    "win": {
+      "target": ["nsis", "portable"],
+      "certificateFile": null,
+      "certificatePassword": null
+    },
+    "nsis": {
+      "oneClick": false,
+      "allowToChangeInstallationDirectory": true
+    }
+  }
+}
