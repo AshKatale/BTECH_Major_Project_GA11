@@ -39,38 +39,7 @@ This B.Tech Major Project implements a **Federated Learning (FL) system** for sk
 
 ## 🏗️ System Architecture
 
-```
-┌──────────────────────────────────────────────────────┐
-│             WEB DASHBOARD (React/Vite)               │
-│                  localhost:5173                       │
-└──────────────────────┬───────────────────────────────┘
-                       │ HTTP/REST (JWT Auth)
-┌──────────────────────▼───────────────────────────────┐
-│            EXPRESS BACKEND SERVER :3001               │
-│   Auth (JWT) │ Predictions │ FL Management            │
-└───┬──────────────────┬──────────────────┬────────────┘
-    │                  │                  │
-┌───▼───┐      ┌───────▼────┐    ┌───────▼──────┐
-│MongoDB│      │ PostgreSQL │    │  Flask ML API│
-│(preds)│      │(users/logs)│    │  :5000/:6000 │
-└───────┘      └────────────┘    └──────────────┘
-
-┌──────────────────────────────────────────────────────┐
-│       FEDERATED LEARNING SERVER (Flower) :8080        │
-│  FedAvg Strategy → Aggregates model weights           │
-│         ↕ gRPC (bi-directional)                       │
-│  [Hospital 1] [Hospital 2] [Hospital 3] ... [N]       │
-│  Each trains locally → sends weights only             │
-└──────────────────────────────────────────────────────┘
-
-┌──────────────────────────────────────────────────────┐
-│         DESKTOP APP (Electron)                        │
-│  Manages local FL client training per hospital        │
-│  Connects to FL Server & Express Backend              │
-└──────────────────────────────────────────────────────┘
-```
-
----
+![Architecture Diagram](architecture.png)
 
 ## 📁 Project Structure
 
