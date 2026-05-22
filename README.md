@@ -1,4 +1,4 @@
-# 🔬 Federated Learning Skin Cancer Prediction System
+# 🔬 DermaAI : Federated Learning Skin Cancer Prediction System
 
 > A privacy-preserving, multi-institutional skin cancer detection platform powered by **Federated Learning**, **EfficientNet-B0**, and the **Flower framework** — enabling collaborative AI training without sharing patient data.
 
