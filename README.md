@@ -17,10 +17,6 @@
 - [Federated Learning Workflow](#-federated-learning-workflow)
 - [API Endpoints](#-api-endpoints)
 - [Skin Cancer Classes](#-skin-cancer-classes)
-- [Model Performance](#-model-performance)
-- [Deployment](#-deployment)
-- [Demonstration Guide](#-demonstration-guide)
-- [Troubleshooting](#-troubleshooting)
 
 ---
 
