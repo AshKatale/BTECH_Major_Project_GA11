@@ -185,8 +185,8 @@ Ensure the following are installed before proceeding:
 ### 1. Clone the Repository
 
 ```bash
-git clone https://github.com/AshKatale/-BTECH_Major_Project_GA11.git
-cd -BTECH_Major_Project_GA11
+git clone https://github.com/AshKatale/BTECH_Major_Project_GA11.git
+cd BTECH_Major_Project_GA11
 ```
 
 ### 2. Install Client (Frontend)
@@ -443,16 +443,6 @@ The model classifies skin lesions into **7 categories** (HAM10000 dataset):
 
 ---
 
-## 📈 Model Performance
-
-| FL Round | Training Loss | Accuracy |
-|---|---|---|
-| Round 1 | 3.08 | 27.5% |
-| Round 2 | 0.12 | 96.2% |
-| Round 3 | 0.12 | 97.5% |
-| **Round 4** | **0.07** | **98.8% ✓ Best** |
-| Round 5 | 0.21 | 93.8% |
-
 - **Architecture**: EfficientNet-B0 (~4.2M parameters)
 - **Input**: 224×224×3 images
 - **Dataset**: HAM10000 (10,015 dermoscopy images)
@@ -492,96 +482,8 @@ npm run build-mac
 # Linux:
 npm run build-linux
 
-# Output in desktop-app/release/
-```
-
-### Render / Cloud Deployment
-
-Update the following in `fl-server/.env`:
-
-```env
-CORS_ORIGINS=https://your-frontend-domain.com,https://your-backend-domain.com
-```
-
----
-
-## 🎥 Demonstration Guide
-
-### Step-by-Step Demo Flow
-
-1. **Start all services** (see [Running the System](#️-running-the-system))
-2. **Open** http://localhost:5173 in browser
-3. **Register / Login** as a doctor or admin
-4. **Upload a skin lesion image** → receive instant prediction with confidence score and risk level
-5. **View Prediction History** → filter by date, risk level, class
-6. **Navigate to Federated Learning Dashboard**:
-   - Start the FL Server
-   - Connect a hospital client via the Desktop App
-   - Trigger a training round
-   - Monitor round progress and aggregated accuracy in real-time
-7. **Switch Inference Model** → compare standard vs FL-trained model predictions
-8. **Batch Prediction** → upload multiple images, export results as CSV
-
-### Key Demo Points
-
-- Show the privacy guarantee: client never uploads raw images to FL server
-- Demonstrate accuracy improvement across FL rounds (Round 1 → Round 4)
-- Show role-based access control (doctor vs admin views)
-
----
-
-## 🐛 Troubleshooting
-
-### MongoDB Connection Error
-
-```bash
-# Check MongoDB is running
-mongod --dbpath /data/db
-# Or start MongoDB service
-net start MongoDB
-```
-
-### Python Module Not Found
-
-```bash
-# Ensure you're in the correct virtualenv and installed requirements
-pip install -r requirements.txt
-```
-
-### Port Already in Use
-
-```bash
-# Windows — find and kill process on a port
-netstat -ano | findstr :3001
-taskkill /PID <PID> /F
-```
-
-### CUDA / GPU Not Detected
-
-```bash
-python -c "import torch; print(torch.cuda.is_available())"
-# If False, install CUDA toolkit and PyTorch CUDA build:
-pip install torch torchvision --index-url https://download.pytorch.org/whl/cu121
-```
-
-### FL Client Cannot Connect to Server
-
-- Verify FL server is running on `localhost:8080`
-- Check firewall rules allow gRPC port 8080
-- Ensure correct `server_address` passed to client script
-
----
-
 ## 📄 License
 
 This project is developed as a **B.Tech Major Project** for academic purposes.
 
----
 
-## 👨‍💻 Author
-
-**Ash Katale** — [GitHub: AshKatale](https://github.com/AshKatale)
-
----
-
-> 📖 For complete technical documentation, see [SYSTEM_DOCUMENTATION.md](./SYSTEM_DOCUMENTATION.md)
